@@ -10,7 +10,7 @@
 		<table>
 			<tr>
 				<td><img src="AIUB_logo.png" height="<?php echo $imageHeight;?>" width="<?php echo $imageWidth;?>"></td>
-				<td><h2>American International University-</h2></td>
+				<td><h2>American International <br>University-<span style="background-color:<?php echo $backColor;?>; color:<?php echo $fontColor;?>;">Bangladesh </h2></span></td>
 			</tr>
 			
 		</table>
