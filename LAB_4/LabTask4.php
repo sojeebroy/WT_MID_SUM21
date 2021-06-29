@@ -296,12 +296,12 @@
 				</tr>
 				<tr>
 					<td>Password :</td>
-					<td><input type="password" name="password">  </td>
+					<td><input type="password" name="password" value="<?php echo $password;?>">  </td>
 					<td><span> <?php echo $err_password;?> </span></td>
 				</tr>
 				<tr>
 					<td>Confirm Password :</td>
-					<td><input type="password" name="ConfirmPassword">  </td>
+					<td><input type="password" name="ConfirmPassword" value="<?php echo $ConfirmPassword;?>">  </td>
 					<td><span> <?php echo $err_ConfirmPassword;?> </span></td>
 				</tr>
 				<tr>

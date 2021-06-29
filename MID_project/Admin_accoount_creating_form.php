@@ -18,27 +18,21 @@
 	$err_dating="";
 	$err_month="";
 	$err_year="";
-	$bio="";
-	$err_bio="";
-	$department="";
-	$err_department="";
-	$dept=array("Out Patient Consultation","Investigation","CT scan","MRI","Ultra Sound","Nuclear Medicine","X-ray","Lab Medicine","Vaccination","Health Screening","Pharmacy","Others");
-
-	
 ?>
 <!DOCTYPE html>
 <head>
-	<title>Account creation for Doctor</title>
+	<title>Account creation for Admin</title>
 </head>
 <body>
 	<form action="" method="post">
+
 		<h1>Hospital Management System</h1><br>
-		<h2 align="center"> Create an account.</h2>
+		<h2 align="center"> Create an Admin account.</h2>
 		<table align="center">
 		<tr>
 			<td>Full Name :</td>
 			<td><input type="text" name="name" value="<?php echo $name;?>" ></td>
-			<td><span> <?php echo $err_name;?> </span></td>	
+			<td><span> <?php echo $err_name;?> </span></td>				
 		</tr>
 		<tr>
 			<td>Email :</td>
@@ -61,21 +55,6 @@
 			<input type="radio" name="gender" value="Female"<?php if ($gender=="female") echo "checked";?>> Female</td>
 			<td><span> <?php echo $err_gender;?> </span></td>
 		</tr>
-		<tr>
-			<td>Select Department :</td>
-			<td>
-				<select name="department"><option disabled selected>---Select---</option>
-              <?php 
-  				foreach($dept as $d)
-				{
-					if($d==$department)
-					{echo "<option selected>$d</option>";}
-					else
-					echo "<option> $d </option>";
-  				}?>
-             </select>
-			</td>
-		</tr> 
 		<tr>
 			<td>Address :</td>
 			<td><input type="text" name="address" value="<?php echo $address;?>"> </td>
@@ -118,26 +97,24 @@
 			<td><span> <?php echo $err_dating;?></span>
             <span><?php echo $err_month;?></span>
             <span><?php echo $err_year;?> </span></td>
-		</tr>
-		<tr>
-			<td>Bio :</td>
-			<td><textarea name="bio" ><?php echo $bio; ?></textarea></td>	
-			<td><span><?php echo $err_bio;?> </span></td>	
-		</tr>	
-		<tr>
+			</tr>
+		<tr><td><br></td><td><br></td></tr>
+   		<tr>
 			<td align="right"><button><a href="Admin.php">Back</a></button></td>
 			<td align="left"><input type="submit" name="submit" value="submit"></td>
+			<td></td>
 		</tr>
-	</table>
+
+		</table>
 	</form>
-	<br><br>
-	</body>
+</body>
 </html>
-<?php
+
+<?php 
 	$hasError=false;
 
 	if(isset($_POST["submit"]))
-		
+	{	
 		if(empty($_POST["name"]))
 		{
 			$hasError = true;
@@ -152,7 +129,7 @@
 		{
 			$name = $_POST["name"];
 		}
-		if(isset($_POST["submit"]))
+		
 		if(empty($_POST["password"]))
         {
 			$hasError=true;
@@ -163,13 +140,12 @@
 		    echo htmlspecialchars($_POST["password"]);
 		}
 		else if(strlen($_POST["password"])<8){
-    	    $hasError=true;
-			$err_password="Password Must Be 8 Charachter";
-			}
+        $hasError=true;
+		$err_password="Password Must Be 8 Charachter";
+		}
 		else{
 			 $password=$_POST["password"];
 			}
-			if(isset($_POST["submit"]))
 		if(empty($_POST["phone"]))
 		{
 			$hasError = true;
@@ -182,7 +158,6 @@
 		else {
 			$phone=$_POST["phone"];
 		}
-		if(isset($_POST["submit"]))
 		if(empty($_POST["address"]))
 		{
 			$hasError = true;
@@ -191,14 +166,14 @@
 		else {
 			$address=$_POST["address"];
 		}
-		if(isset($_POST["submit"]))
+		
 		 if (empty($_POST["email"])) {
 			$hasError=true;
 			$err_email = "Email is required";   }
 			
-		else{$email =$_POST["email"];
+			else{
+                $email =$_POST["email"];
 				}
-				if(isset($_POST["submit"]))
 		if (!isset($_POST["date"])){
 			$hasError = true;
 			$err_dating="Date Required";
@@ -206,7 +181,6 @@
 		else{
 			$date = $_POST["date"];
 		}
-		if(isset($_POST["submit"]))
         if (!isset($_POST["month"])){
 			$hasError = true;
 			$err_month="month Required";
@@ -214,7 +188,6 @@
         else{
 			$month = $_POST["month"];
 			}
-			if(isset($_POST["submit"]))
         if (!isset($_POST["year"])){
 			$hasError = true;
 			$err_year="year Required";
@@ -222,7 +195,6 @@
         else{
 			$year = $_POST["year"];
         }
-        if(isset($_POST["submit"]))
         if(!isset($_POST["gender"]))
         {
         	$hasError=true;
@@ -230,22 +202,6 @@
         }
         else
         { $gender=$_POST["gender"];}
-        if(isset($_POST["submit"]))
-    	if(empty($_POST["bio"])){
-			$hasError = true;
-			$err_bio = "Bio Required";
-		}
-		else{
-			$bio = $_POST["bio"];
-		}
-		if(isset($_POST["submit"]))
-
-		if (!isset($_POST["department"])){
-			$hasError = true;
-			$err_department="department Required";
-		}
-		else{
-			$department = $_POST["department"];
 		
 		if(!$hasError)
 		{
@@ -257,10 +213,7 @@
             echo "Phone  		:".$_POST["phone"]."<br>";
 			echo "Gender  		:".$_POST["gender"]."<br>";
 			echo "Birth date  	:".$_POST["date"]." ".$_POST["month"]." ".$_POST["year"]."<br>";
-            echo "Address 	 	:".$_POST["address"]."<br>";
-            echo "Department  	:".$_POST["department"]."<br>";
-            echo "Bio           :".$_POST["bio"]."<br>";
-
+            echo "Address 	 	:".$_POST["address"]."<br>";	
 		}	
 	}
 ?>
