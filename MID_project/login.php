@@ -3,8 +3,38 @@
 	$err_password="";
 	$email="";
 	$err_email="";
+	$hasError=false;
 
-?><!DOCTYPE html>
+	if(isset($_POST["submit"]))
+	{	
+		if (empty($_POST["email"])) {
+			$hasError=true;
+			$err_email = "Email is required";   }
+			
+			else{
+                $email =$_POST["email"];
+				}
+		
+		if(empty($_POST["password"]))
+        {
+			$hasError=true;
+			$err_password="Password Required";
+        }
+        else if(isset($_POST[""]))
+		{
+		    echo htmlspecialchars($_POST["password"]);
+		}
+		else if(strlen($_POST["password"])<8){
+        $hasError=true;
+		$err_password="Password Must Be 8 Charachter";
+		}
+		else{
+			 $password=$_POST["password"];
+			}
+		
+	}
+?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>login</title>

@@ -5,6 +5,55 @@
 $name="";
 $err_name="";
 	
+	$hasError=false;
+
+	if(isset($_POST["search"]))
+	{
+		if(empty($_POST["department"]))
+		{
+			$hasError = true;
+			$err_department="department Required";
+		}
+		else {
+			$department=$_POST["department"];
+		}
+
+		if(!$hasError)
+		{
+			echo "<h1>Search Result</h1><br>";
+			echo "Dr. Shams Munwar"."<br>";
+			echo "MBBS, MRCP (UK), D.Card (London)"."<br>";
+			echo $_POST["department"]."<br><br><br>";
+		    echo "Prof. Dr. A.Q.M. Reza"."<br>";
+			echo "MBBS, MRCP (UK), D.Card (London).<br>";
+			echo $_POST["department"]."<br><br><br>";
+			echo "Prof. (Dr.) Md. Shahabuddin Talukder"."<br>";
+			echo "MBBS, D.Card. (DU), FCPS (Medicine)"."<br>";
+			echo $_POST["department"];
+		}
+
+	}	
+	if(isset($_POST["submit"]))
+	{
+		if(empty($_POST["name"]))
+		{
+			$hasError = true;
+			$err_department="Name Required";
+		}
+		else {
+			$department=$_POST["name"];
+		}
+
+		if(!$hasError)
+		{
+			echo "<h1>Search Result</h1><br>";
+			echo $_POST["name"]."<br>";
+			echo "Cardiologist"."<br>";
+			echo "MBBS, MRCP (UK), D.Card (London)"."<br>";
+			
+		}
+
+	}	
 ?>
 <html>
 <head>
@@ -46,6 +95,7 @@ $err_name="";
 			<tr>
 			<td>Full Name :</td>
 			<td><input type="text" name="name" value="<?php echo $name;?>" ></td>
+			<td><span> <?php echo $err_name;?> </span></td>	
 			</tr>
 			<tr>
 			<td align="center" colspan="2"><input type="submit" name="submit" value="submit"></td>	
@@ -57,58 +107,4 @@ $err_name="";
 </body>
 </html>
 
-<?php
-	$hasError=false;
 
-	if(isset($_POST["submit"]))
-	{
-		if(empty($_POST["name"]))
-		{
-			$hasError = true;
-			$err_department="Name Required";
-		}
-		else {
-			$department=$_POST["name"];
-		}
-
-		if(!$hasError)
-		{
-			echo "<h1>Search Result</h1><br>";
-			echo $_POST["name"]."<br>";
-			echo "Cardiologist"."<br>";
-			echo "MBBS, MRCP (UK), D.Card (London)"."<br>";
-			
-		}
-
-	}	
-?>
-<?php
-	$hasError=false;
-
-	if(isset($_POST["search"]))
-	{
-		if(empty($_POST["department"]))
-		{
-			$hasError = true;
-			$err_department="department Required";
-		}
-		else {
-			$department=$_POST["department"];
-		}
-
-		if(!$hasError)
-		{
-			echo "<h1>Search Result</h1><br>";
-			echo "Dr. Shams Munwar"."<br>";
-			echo "MBBS, MRCP (UK), D.Card (London)"."<br>";
-			echo $_POST["department"]."<br><br><br>";
-		    echo "Prof. Dr. A.Q.M. Reza"."<br>";
-			echo "MBBS, MRCP (UK), D.Card (London).<br>";
-			echo $_POST["department"]."<br><br><br>";
-			echo "Prof. (Dr.) Md. Shahabuddin Talukder"."<br>";
-			echo "MBBS, D.Card. (DU), FCPS (Medicine)"."<br>";
-			echo $_POST["department"];
-		}
-
-	}	
-?>

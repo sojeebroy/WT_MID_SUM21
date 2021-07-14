@@ -23,118 +23,7 @@
 	$department="";
 	$err_department="";
 	$dept=array("Out Patient Consultation","Investigation","CT scan","MRI","Ultra Sound","Nuclear Medicine","X-ray","Lab Medicine","Vaccination","Health Screening","Pharmacy","Others");
-
-	
-?>
-<!DOCTYPE html>
-<head>
-	<title>Account creation for Doctor</title>
-</head>
-<body>
-	<form action="" method="post">
-		<h1>Hospital Management System</h1><br>
-		<h2 align="center"> Create an account.</h2>
-		<table align="center">
-		<tr>
-			<td>Full Name :</td>
-			<td><input type="text" name="name" value="<?php echo $name;?>" ></td>
-			<td><span> <?php echo $err_name;?> </span></td>	
-		</tr>
-		<tr>
-			<td>Email :</td>
-			<td><input type="text" name="email" value="<?php echo $email; ?>"> </td>
-			<td><span> <?php echo $err_email;?> </span></td>
-		</tr>
-		<tr>
-			<td>Password :</td>
-			<td><input type="password" name="password" value="<?php echo $password;?>"> </td>
-			<td><span> <?php echo $err_password;?> </span></td>
-		</tr>
-		<tr>
-			<td>Phone Number :</td>
-			<td><input type="text" name="phone" value="<?php echo $phone;?>"> </td>
-		</tr>
-		<tr>
-			<td>Gender :</td>
-			<td colspan="2">
-			<input type="radio" name="gender" value="Male"<?php if ($gender=="Male") echo "checked";?>>Male
-			<input type="radio" name="gender" value="Female"<?php if ($gender=="female") echo "checked";?>> Female</td>
-			<td><span> <?php echo $err_gender;?> </span></td>
-		</tr>
-		<tr>
-			<td>Select Department :</td>
-			<td>
-				<select name="department"><option disabled selected>---Select---</option>
-              <?php 
-  				foreach($dept as $d)
-				{
-					if($d==$department)
-					{echo "<option selected>$d</option>";}
-					else
-					echo "<option> $d </option>";
-  				}?>
-             </select>
-			</td>
-		</tr> 
-		<tr>
-			<td>Address :</td>
-			<td><input type="text" name="address" value="<?php echo $address;?>"> </td>
-		</tr>
-		<tr>
-			<td>Birth Date :</td>
-			<td><select name="date"><option disabled selected>Date</option>  
-	         <?php
-                foreach(range(1,31) as $i)
-                { if($i==$date)
-                	{echo "<option selected>$i</option>";}
-            	else
-                { echo "<option> $i </option>";}
-                }?>
-             </select>
-
-             <select name="month"> <option disabled selected>Month</option>
-
-              <?php 
-  				foreach($array as $p)
-				{
-					if($p==$month)
-					{echo "<option selected>$p</option>";}
-					else
-					echo "<option> $p </option>";
-  				}?>
-			 
-             </select>
-             <select name="year">
-              <option disabled selected>Year</option>
-              <?php
-               foreach(range(1940,2021) as $j)
-               {	if($j==$year)
-               		{echo "<option selected>$j</option>";}
-               		else {echo "<option> $j </option>";}
-               }?>
-
-			</select>				
-			</td>
-			<td><span> <?php echo $err_dating;?></span>
-            <span><?php echo $err_month;?></span>
-            <span><?php echo $err_year;?> </span></td>
-		</tr>
-		<tr>
-			<td>Bio :</td>
-			<td><textarea name="bio" ><?php echo $bio; ?></textarea></td>	
-			<td><span><?php echo $err_bio;?> </span></td>	
-		</tr>	
-		<tr>
-			<td align="right"><button><a href="Admin.php">Back</a></button></td>
-			<td align="left"><input type="submit" name="submit" value="submit"></td>
-		</tr>
-	</table>
-	</form>
-	<br><br>
-	</body>
-</html>
-<?php
-	$hasError=false;
+$hasError=false;
 
 	if(isset($_POST["submit"]))
 		
@@ -262,5 +151,113 @@
             echo "Bio           :".$_POST["bio"]."<br>";
 
 		}	
-	}
+	}	
 ?>
+<!DOCTYPE html>
+<head>
+	<title>Account creation for Doctor</title>
+</head>
+<body>
+	<form action="" method="post">
+		<h1>Hospital Management System</h1><br>
+		<h2 align="center"> Create an account.</h2>
+		<table align="center">
+		<tr>
+			<td>Full Name :</td>
+			<td><input type="text" name="name" value="<?php echo $name;?>" ></td>
+			<td><span> <?php echo $err_name;?> </span></td>	
+		</tr>
+		<tr>
+			<td>Email :</td>
+			<td><input type="text" name="email" value="<?php echo $email; ?>"> </td>
+			<td><span> <?php echo $err_email;?> </span></td>
+		</tr>
+		<tr>
+			<td>Password :</td>
+			<td><input type="password" name="password" value="<?php echo $password;?>"> </td>
+			<td><span> <?php echo $err_password;?> </span></td>
+		</tr>
+		<tr>
+			<td>Phone Number :</td>
+			<td><input type="text" name="phone" value="<?php echo $phone;?>"> </td>
+		</tr>
+		<tr>
+			<td>Gender :</td>
+			<td colspan="2">
+			<input type="radio" name="gender" value="Male"<?php if ($gender=="Male") echo "checked";?>>Male
+			<input type="radio" name="gender" value="Female"<?php if ($gender=="female") echo "checked";?>> Female</td>
+			<td><span> <?php echo $err_gender;?> </span></td>
+		</tr>
+		<tr>
+			<td>Select Department :</td>
+			<td>
+				<select name="department"><option disabled selected>---Select---</option>
+              <?php 
+  				foreach($dept as $d)
+				{
+					if($d==$department)
+					{echo "<option selected>$d</option>";}
+					else
+					echo "<option> $d </option>";
+  				}?>
+             </select>
+			</td>
+		</tr> 
+		<tr>
+			<td>Address :</td>
+			<td><input type="text" name="address" value="<?php echo $address;?>"> </td>
+		</tr>
+		<tr>
+			<td>Birth Date :</td>
+			<td><select name="date"><option disabled selected>Date</option>  
+	         <?php
+                foreach(range(1,31) as $i)
+                { if($i==$date)
+                	{echo "<option selected>$i</option>";}
+            	else
+                { echo "<option> $i </option>";}
+                }?>
+             </select>
+
+             <select name="month"> <option disabled selected>Month</option>
+
+              <?php 
+  				foreach($array as $p)
+				{
+					if($p==$month)
+					{echo "<option selected>$p</option>";}
+					else
+					echo "<option> $p </option>";
+  				}?>
+			 
+             </select>
+             <select name="year">
+              <option disabled selected>Year</option>
+              <?php
+               foreach(range(1940,2021) as $j)
+               {	if($j==$year)
+               		{echo "<option selected>$j</option>";}
+               		else {echo "<option> $j </option>";}
+               }?>
+
+			</select>				
+			</td>
+			<td><span> <?php echo $err_dating;?></span>
+            <span><?php echo $err_month;?></span>
+            <span><?php echo $err_year;?> </span></td>
+		</tr>
+		<tr>
+			<td>Bio :</td>
+			<td><textarea name="bio" ><?php echo $bio; ?></textarea></td>	
+			<td><span><?php echo $err_bio;?> </span></td>	
+		</tr>	
+		<tr>
+			<td align="right"><button><a href="Admin.php">Back</a></button></td>
+			<td align="left"><input type="submit" name="submit" value="submit"></td>
+		</tr>
+	</table>
+	</form>
+	<br><br>
+	</body>
+</html>
+
